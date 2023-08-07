@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class AdivinatorMessage extends StatelessWidget {
-  const AdivinatorMessage({super.key});
+  final Message message;
+
+  const AdivinatorMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +14,10 @@ class AdivinatorMessage extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 6, 0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
+                backgroundImage: NetworkImage(message.imageUrl ??
                     'https://d23.com/app/uploads/2020/08/780w-463h_082820_10-best-inators_3.jpg'),
               ),
             ),
@@ -22,9 +25,10 @@ class AdivinatorMessage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: colors.secondary,
                   borderRadius: BorderRadius.circular(10)),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text("Adivinator Message"),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Text(message.text),
               ),
             ),
           ],
