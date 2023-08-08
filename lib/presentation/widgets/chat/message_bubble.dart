@@ -3,9 +3,11 @@ import 'package:yes_no_app/domain/entities/message.dart';
 
 class MessageBubble extends StatelessWidget {
   final Message message;
+  final bool hat;
   const MessageBubble({
     super.key,
     required this.message,
+    this.hat = false,
   });
 
   @override
@@ -27,11 +29,12 @@ class MessageBubble extends StatelessWidget {
                 child: Text(message.text),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(6, 0, 0, 0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://cdn.wallpapersafari.com/35/22/Y9WFlq.jpg'),
+                backgroundImage: NetworkImage(hat == true
+                    ? 'https://pbs.twimg.com/profile_images/1276291982/Perry_el_Ornitorrinco_by_KiiluDoki_400x400.png'
+                    : 'https://cdn.wallpapersafari.com/35/22/Y9WFlq.jpg'),
               ),
             )
           ],
