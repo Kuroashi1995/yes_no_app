@@ -14,10 +14,10 @@ class AdivinatorMessage extends StatelessWidget {
       children: [
         Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 6, 0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(message.imageUrl ??
+                backgroundImage: NetworkImage(
                     'https://d23.com/app/uploads/2020/08/780w-463h_082820_10-best-inators_3.jpg'),
               ),
             ),
@@ -36,7 +36,9 @@ class AdivinatorMessage extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        _ImageBubble(),
+        _ImageBubble(
+          imageUrl: message.imageUrl,
+        ),
         const SizedBox(
           height: 10,
         ),
@@ -46,13 +48,19 @@ class AdivinatorMessage extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String? imageUrl;
+
+  const _ImageBubble({
+    this.imageUrl,
+  });
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Image.network(
-        "https://yesno.wtf/assets/no/31-cc391a4c0332a4ce5b4d4666f64a7b4a.gif",
+        imageUrl ??
+            "https://yesno.wtf/assets/no/31-cc391a4c0332a4ce5b4d4666f64a7b4a.gif",
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
