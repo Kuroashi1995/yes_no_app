@@ -43,7 +43,10 @@ class _ChatView extends StatelessWidget {
                 itemCount: chatProvider.messages.length,
                 itemBuilder: (context, index) {
                   return chatProvider.messages[index].fromWhom == FromWhom.mine
-                      ? MessageBubble(message: chatProvider.messages[index])
+                      ? MessageBubble(
+                          message: chatProvider.messages[index],
+                          hat: chatProvider.hat,
+                        )
                       : AdivinatorMessage(
                           message: chatProvider.messages[index],
                         );
